@@ -1,0 +1,48 @@
+ 
+public boolean hasEmptyCellForDisabilityCheck(List<Cell> cells) {
+    for (Cell cell : cells) {
+        if (cell.getPrisonersInCell().isEmpty()) {
+            return true; // Se a cela estiver vazia, não pode alocar um prisioneiro com deficiência.
+        }
+    }
+    return false; // Se nenhuma cela estiver vazia, a alocação pode ser permitida.
+}
+
+
+
+
+
+
+
+if (listHasSpace.isEmpty()) {
+            System.out.println("Não há celas disponíveis para alocar o prisioneiro.");
+            return false;
+        }
+
+        System.out.println("----ESTES SÃO OS NOMES DAS CELAS COM ESPAÇOS E SEUS ESPAÇOS----");
+        for (Cell cell : listHasSpace) {
+            System.out.println("Nome: " + cell.getName() + " || Espaço disponível: " + cell.getFreeSpace());
+        }
+
+        Cell celaSelecionada = null;
+        while (celaSelecionada == null) {
+            String selecionado = teclado.lerString("----Digite o nome da cela que deseja alocar----");
+
+            for (Cell cell : listHasSpace) {
+                if (cell.getName().equalsIgnoreCase(selecionado)) {
+                    celaSelecionada = cell;
+                    break;
+                }
+            }
+
+            if (celaSelecionada == null) {
+                System.out.println("Cela não encontrada ou não disponível. Tente novamente.");
+            }
+        }
+
+        boolean sucesso = celaSelecionada.allocatePrisoner(prisoner);
+        if (sucesso) {
+            System.out.println("Prisioneiro " + prisoner.getName() + " alocado com sucesso na cela " + celaSelecionada.getName());
+        } else {
+            System.out.println("Falha ao alocar o prisioneiro na cela " + celaSelecionada.getName());
+        }
